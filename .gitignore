@@ -1,0 +1,41 @@
+# Variable files
+terraform.tfvars
+
+# Compiled files
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+**/.terraform.lock.hcl
+
+# Terraform directory
+.terraform/
+terraform.tfstate.d/
+logs/
+
+
+# IDE configs
+.idea
+
+# Ruby download package lock file.
+Gemfile.lock
+
+# Mac folder attribute file
+.DS_Store
+
+.terraform.tfstate.lock.info
+
+# SSH Key
+private_ssh_key
+
+# generated readme by the pr-check job
+
+README-generated.md
+
+**/override.tf
+
+.tflint.hcl
+.tflint_example.hcl
+.tflint.merged.hcl
+.tflint_example.merged.hcl
+
