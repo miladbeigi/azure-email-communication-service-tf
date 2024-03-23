@@ -3,7 +3,7 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "email_data_location" {
+variable "data_location" {
   description = "The location of the email data."
   type        = string
   default     = "United States"
@@ -21,3 +21,10 @@ variable "communication_service_name" {
   default     = "Default"
 }
 
+variable "tags" {
+  type = map(string)
+  default = {
+    ENV = "Dev"
+  }
+  description = "The tags to associate with your resources."
+}

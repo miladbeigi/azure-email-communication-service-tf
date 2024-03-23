@@ -5,7 +5,8 @@ resource "random_id" "name" {
 resource "azurerm_email_communication_service" "this" {
   name                = var.email_service_name == "Default" ? random_id.name.hex : var.email_service_name
   resource_group_name = data.azurerm_resource_group.rg.name
-  data_location       = var.email_data_location
+  data_location       = var.data_location
+  tags                = var.tags
 }
 
 resource "azapi_resource" "managed_domain" {
@@ -20,6 +21,7 @@ resource "azapi_resource" "managed_domain" {
     }
   })
   response_export_values = ["properties.mailFromSenderDomain"]
+  tags                   = var.tags
 }
 
 resource "azapi_resource" "communication_service" {
@@ -29,11 +31,12 @@ resource "azapi_resource" "communication_service" {
   location  = "global"
   body = jsonencode({
     "properties" = {
-      "dataLocation" = "${var.email_data_location}"
+      "dataLocation" = "${var.data_location}"
       "linkedDomains" = [
         "${azapi_resource.managed_domain.id}"
       ]
     }
   })
   response_export_values = ["properties.hostName"]
+  tags                   = var.tags
 }
