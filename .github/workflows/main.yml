@@ -10,22 +10,19 @@ jobs:
     name: Format Terraform
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
+      - name: Code
         uses: actions/checkout@v3
       
-      - name: Setup Terraform
+      - name: Setup
         uses: hashicorp/setup-terraform@v1
       
-      - name: Run terraform fmt check
-        id: fmt
+      - name: Format
         run: terraform fmt -check -diff -recursive .
 
-      - name: Initialize Terraform
-        id: init
+      - name: Initialize
         run: |
           terraform init
       
-      - name: Validate Terraform
-        id: validate
+      - name: Validate
         run: |
           terraform validate
